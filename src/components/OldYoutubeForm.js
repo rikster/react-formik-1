@@ -20,7 +20,7 @@ const validationSchema = Yup.object({
   channel: Yup.string().required('Required')
 })
 
-function YoutubeForm () {
+function OldYoutubeForm () {
   const formik = useFormik({
     initialValues,
     onSubmit,
@@ -38,7 +38,9 @@ function YoutubeForm () {
           type='text'
           id='name'
           name='name'
-          {...formik.getFieldProps('name')}
+          onChange={formik.handleChange}
+          onBlur={formik.handleBlur}
+          value={formik.values.name}
         />
         {formik.touched.name && formik.errors.name ? (
           <div className='error'>{formik.errors.name}</div>
@@ -51,7 +53,9 @@ function YoutubeForm () {
           type='email'
           id='email'
           name='email'
-          {...formik.getFieldProps('email')}
+          onChange={formik.handleChange}
+          onBlur={formik.handleBlur}
+          value={formik.values.email}
         />
         {formik.touched.email && formik.errors.email ? (
           <div className='error'>{formik.errors.email}</div>
@@ -64,7 +68,9 @@ function YoutubeForm () {
           type='text'
           id='channel'
           name='channel'
-          {...formik.getFieldProps('channel')}
+          onChange={formik.handleChange}
+          onBlur={formik.handleBlur}
+          value={formik.values.channel}
         />
         {formik.touched.channel && formik.errors.channel ? (
           <div className='error'>{formik.errors.channel}</div>
@@ -76,4 +82,4 @@ function YoutubeForm () {
   )
 }
 
-export default YoutubeForm
+export default OldYoutubeForm
